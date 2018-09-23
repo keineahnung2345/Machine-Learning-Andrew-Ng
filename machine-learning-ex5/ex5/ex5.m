@@ -219,4 +219,26 @@ end
 fprintf('Program paused. Press enter to continue.\n');
 pause;
 
-
+##%% =========== Part 9: Compute test set error =============
+##lambda = 3;
+##[theta] = trainLinearReg(X_poly, y, lambda);
+##linearRegCostFunction(X_poly_test, ytest, theta, 0);
+##
+##%% =========== Part 10: Compute test set error =============
+##lambda = 0.01;
+##times = 50;
+##for i=1:m
+##  avg_train_error = 0;
+##  avg_val_error = 0;
+##  for time=1:times
+##    sub_ids = randsample([1:m],i);
+##    sub_X_poly = X_poly(sub_ids,:);
+##    sub_y = y(sub_ids);
+##    theta = trainLinearReg(sub_X_poly, sub_y, lambda);
+##    avg_train_error += linearRegCostFunction(sub_X_poly, sub_y, theta, 0)/times;
+##    avg_val_error += linearRegCostFunction(X_poly_val, yval, theta, 0)/times;
+##  endfor
+##  error_train(i) = avg_train_error;
+##  error_val(i) = avg_val_error;
+##endfor
+##plot(1:m, error_train, 1:m, error_val);
