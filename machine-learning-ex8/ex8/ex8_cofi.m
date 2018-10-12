@@ -216,7 +216,9 @@ pause;
 %
 
 p = X * Theta';
-my_predictions = p(:,1) + Ymean;
+my_predictions = p(:,1) + Ymean; 
+%Because we use Ynorm rather than Y to train X and Theta,
+% so here we need to add it back
 
 movieList = loadMovieList();
 
